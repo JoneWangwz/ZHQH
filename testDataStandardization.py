@@ -5,6 +5,7 @@ Created on Thu Apr 12 09:47:10 2018
 @author: 王钊
 """
 '''
+生成测试数据，用于生成最后的按日期的表
 speciesList品种列表,variety.txt
 testingData 测试数据来源
 testingStand 存放地址
