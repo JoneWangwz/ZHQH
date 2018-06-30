@@ -27,6 +27,7 @@ from sklearn.linear_model import LogisticRegression
 #from sklearn.ensemble import ExtraTreesClassifier
 #from sklearn.ensemble import BaggingClassifier
 
+
 zero = 0.000000000001
 
 def train_model_function(testCSV,trendSize,training2Model,testing2Model,TrainingResult):
