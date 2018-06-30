@@ -8,7 +8,6 @@ Created on Fri Apr 27 10:32:30 2018
 import pandas as pd
 #import numpy as np
 
-#step 1：text ---> csv
 
 '''
 data_source_path:品类文件路径
