@@ -7,6 +7,7 @@ Created on Wed May 23 20:12:15 2018
 '''
 对测试数据的日期进行变化，2018/01/1变成20180101
 '''
+
 import numpy as np
 import pandas as pd
 from datetime import datetime 
