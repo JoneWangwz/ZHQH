@@ -11,7 +11,6 @@ Created on Wed Jun  6 22:02:45 2018
 TrainingResult,表示按日期出来的每天结果
 testingStand,测试数据的标准化
 
-
 '''
 
 import pandas as pd
