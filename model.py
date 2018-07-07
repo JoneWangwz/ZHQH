@@ -144,5 +144,9 @@ def train_model_function(testCSV,trendSize,training2Model,testing2Model,Training
                   '合约乘数':contract,'价值':value,'数量':conNum}
         re=pd.DataFrame(data=result,columns=['合约','日期','方向','预测','收盘价1','合约乘数','价值','数量'])        
         re.to_csv(TrainingResult+'/%s.csv'%(ss.loc[xx,'日期']),encoding='gbk',index=False)
+
+if __name__=='__main__':
+    train_model_function('testing2Model/A.csv','TrainingResult/sort',
+                         'training2Model','testing2Model','TrainingResult')
         
     
