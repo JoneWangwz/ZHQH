@@ -50,12 +50,12 @@ def train_model_function(testCSV,trendSize,training2Model,testing2Model,Training
             dff = pd.read_csv(trendSize+'/sort%s.csv'%(str(al)), parse_dates=True,encoding='gbk')
             dff.sort_index(inplace=True)        
             for f in range(len(dff.iloc[1:, 0])):
-                vv=pd.read_csv(training2Model+'\%s.csv' % dff.iloc[f, 0], encoding='gbk', parse_dates=True)
-                dd=pd.read_csv(testing2Model+'\%s.csv' % dff.iloc[f, 0], encoding='gbk')
+                vv=pd.read_csv(training2Model+'/%s.csv' % dff.iloc[f, 0], encoding='gbk', parse_dates=True)
+                dd=pd.read_csv(testing2Model+'/%s.csv' % dff.iloc[f, 0], encoding='gbk')
                 #print('dd.shape[0]',dd.shape[0])
                 for cc in range(dd.shape[0]):
                     if dd.loc[cc,'日期']==ss.loc[xx,'日期']:
-                        with open(training2Model+'\%s.csv' % dff.iloc[f, 0]) as csvfile:
+                        with open(training2Model+'/%s.csv' % dff.iloc[f, 0],encoding='gbk') as csvfile:
                             readCSV = csv.reader(csvfile, delimiter=',')
                             next(readCSV)
                             X = []
