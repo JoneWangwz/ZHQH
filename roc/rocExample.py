@@ -17,7 +17,7 @@ from sklearn.multiclass import OneVsRestClassifier
 from scipy import interp
 
 
-with open(r'IF.csv') as csvfile: 
+with open(r'AG.csv') as csvfile: 
          readCSV = csv.reader(csvfile, delimiter=',')  
          hearder=next(readCSV)
          X = []  
@@ -34,7 +34,7 @@ X = iris.data
 y = iris.target
 '''
 # Binarize the output
-y = label_binarize(y, classes=[0, 1,2])
+y = label_binarize(y, classes=[0,1,2])
 n_classes = y.shape[1]
 
 # Add noisy features to make the problem harder
@@ -43,7 +43,7 @@ random_state = np.random.RandomState(0)
 #X = np.c_[X, random_state.randn(n_samples, 200 * n_features)]
 
 # shuffle and split training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
                                                     random_state=0)
 
 # Learn to predict each class against the other
@@ -67,7 +67,7 @@ roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
 
 plt.figure()
 lw = 2
-plt.plot(fpr[2], tpr[2], color='darkorange',
+plt.plot(fpr[1], tpr[1], color='darkorange',
          lw=lw, label='ROC curve (area = %0.2f)' % roc_auc[0])
 plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
 plt.xlim([0.0, 1.0])

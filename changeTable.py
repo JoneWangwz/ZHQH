@@ -18,9 +18,9 @@ def change(testCSV,TrainingResult):
         contract=[]
         date=[]
         result={}
-        dff=pd.read_csv(TrainingResult+"\%s.csv"%(df.loc[i,'日期']),encoding='gbk')
+        dff=pd.read_csv(TrainingResult+"/%s.csv"%(df.loc[i,'日期']),encoding='gbk')
         #dff=pd.read_csv('TrainingResult\%s.csv'%(df.[i,'日期']),encoding='gbk')
-        cdf=pd.read_csv(TrainingResult+'\%s.csv'%(df.loc[i+1,'日期']),encoding='gbk')
+        cdf=pd.read_csv(TrainingResult+'/%s.csv'%(df.loc[i+1,'日期']),encoding='gbk')
         for j in range(dff.shape[0]):
             m=0
             #n=0
@@ -64,4 +64,5 @@ def change(testCSV,TrainingResult):
                         
                         
                     
-                
+if __name__=='__main__':
+    change('testing2Model/A.csv', 'TrainingResult')

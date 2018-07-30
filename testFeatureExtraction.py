@@ -35,3 +35,6 @@ def featureExtraction(variety,testingStand,testing2Model):
     #df = df.loc[:,['MA_5','MA_10','MA_20','MA_30','MA_40','MA_60','持仓量变化','资金变动','价格变动贡献度','分类']]
         df=df.loc[:,['合约','日期','收盘价1','价格变动贡献度','资金变动','持仓量变化','MA_60','MA_40','MA_30','MA_20','MA_10','MA_5','分类']]
         df.to_csv(testing2Model+'/%s.csv'%dff.iloc[i,0],encoding='gbk',index=False)
+
+if __name__=='__main__':
+    featureExtraction('variety', 'testingStand', 'testing2Model')

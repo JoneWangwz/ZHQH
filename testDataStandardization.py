@@ -8,7 +8,7 @@ Created on Thu Apr 12 09:47:10 2018
 生成测试数据，用于生成最后的按日期的表
 speciesList品种列表,variety.txt
 testingData 测试数据来源
-testingStand 存放地址
+dateStand 存放地址
 testDataStand('variety.txt','testingData','testingStand')
 '''
 
@@ -117,3 +117,6 @@ def testDataStand(speciesList,testingData,testingStand):
                        '最近交易日期','市场最近交易日','MA_5','MA_10','MA_20','MA_30','MA_40','MA_60','持仓量变化','资金变动','价格变动贡献度','分类']]
         df=df.fillna(0)
         df.to_csv(testingStand+'/%s.csv'%dff.iloc[i,0],encoding='gbk',index=False)
+
+if __name__=='__main__':
+    testDataStand('variety.txt', 'testingData', 'testingStand')

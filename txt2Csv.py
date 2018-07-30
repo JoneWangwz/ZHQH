@@ -22,7 +22,7 @@ def txt2csvFunction():
 
     #print(dff)
 
-    
+    cont=[]
     #print(dff.iloc[11,0])
     for i in range(len(dff.loc[:,0])):
         #dff=np.array(dff)
@@ -30,7 +30,7 @@ def txt2csvFunction():
        #从左到右对列进行命名
        #df=pd.read_csv('testData/%s.txt'%dff.iloc[i,0])
        #df.to_csv('test0106/%s.csv'%dff.iloc[i,0],encoding='gbk',index=False)
-       df=pd.read_csv('Data_0622/%s.txt'%dff.iloc[i,0],names=['合约','日期','前收盘','开盘价',
+       df=pd.read_csv('data/%s.txt'%dff.iloc[i,0],names=['合约','日期','前收盘','开盘价',
                    '最高价','最低价','收盘价','成交量','成交额','成交笔数','涨跌(收盘价)','涨跌幅(收盘价)',
                    '振幅(收盘价)','均价','持仓量','持仓量变化','前结算价','结算价','涨跌(结算价)','涨跌幅(结算价)',
                    '最近交易日期','市场最近交易日'])
@@ -38,13 +38,23 @@ def txt2csvFunction():
        df.sort_index(inplace=True)
        df=df.replace('None',0)
        df=df.fillna(0)
-       
+       num=0
        for j in range(df.shape[0]):
            
            if df.loc[j, '开盘价'] == 0:
                 # print(df.shape[1])
-                
+                num=1
                 df = df.drop([j])
-       
+       if num ==1:
+           cont.append(i)
+
         #最后把txt文件写入到csv中，文件个格式，例如“c/qihuo/xx.csv”,%s代表字符，就是把%dff.iloc[i,0]赋值给%s。
        df.to_csv('test0106/%s.csv'%dff.iloc[i,0],encoding='gbk',index=False)
+    cont.sort(reverse=True)
+    '''
+    for co in cont:
+        dff=dff.drop([co])
+    dff.to_csv('variety1.txt',index=False,header=None,encoding='gbk')
+    '''
+if __name__=='__main__':
+    txt2csvFunction()

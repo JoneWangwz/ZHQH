@@ -32,13 +32,16 @@ def combinationTable(date,testingStand,TrainingResult):
     net=[]
     NET={}
     date=[]
-    for i in range(1,df.shape[0]-1):
+    for i in range(1,df.shape[0]-3):
         
-        dff=pd.read_csv(TrainingResult+"\%s.csv"%(df.loc[i,'日期']),encoding='gbk')
+        dff=pd.read_csv(TrainingResult+"/%s.csv"%(df.loc[i,'日期']),encoding='gbk')
         num=0
         for j in range(dff.shape[0]):
             #num=0
-            testdf=pd.read_csv(testingStand+"\%s.csv"%(dff.loc[j,'合约']),encoding='gbk')
+
+            testdf=pd.read_csv(testingStand+"/%s.csv"%(dff.loc[j,'合约']),encoding='gbk')
+            #testdf=pd.read_csv(testingStand+"/BB.csv",encoding='gbk')
+            print('heyue',dff.loc[j,'合约'])
             trainDay.append(df.loc[i-1,'日期'])
             tradingDay.append(df.loc[i,'日期'])
             mark2Market.append(df.loc[i+1,'日期'])
@@ -46,6 +49,9 @@ def combinationTable(date,testingStand,TrainingResult):
             if dff.loc[j,'方向']==0:
                 dff.loc[j,'方向']=-1
             sign.append(dff.loc[j,'方向'])
+            print('i',i)
+            print('heyue',testdf.loc[i,'合约'])
+            print('开盘价',testdf.loc[i,'开盘价1'])
             tradingPrice.append(testdf.loc[i,'开盘价1'])
             nextTradingPrice.append(testdf.loc[i,'下一开盘价'])
             num+=(testdf.loc[i,'下一开盘价']-testdf.loc[i,'开盘价1'])/testdf.loc[i,'开盘价1']*dff.loc[j,'方向']
@@ -69,3 +75,6 @@ def combinationTable(date,testingStand,TrainingResult):
     NET=pd.DataFrame(data=NET,columns=['日期','ret','net'])
     re.to_csv(TrainingResult+'/result.csv',encoding='gbk',index=False)
     NET.to_csv(TrainingResult+'/NET.csv',encoding='gbk',index=False)
+
+if __name__=='__main__':
+    combinationTable('testing2Model/A.csv', 'testingStand', 'TrainingResult')
